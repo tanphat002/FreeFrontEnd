@@ -19,6 +19,15 @@ Route::get('/', function () {
 
 Route::get('/admin/','backendController@dashboard')->name('backend.dashboard');
 
+Route::prefix('/article')->group(function () {
+    Route::get('/','backendController@listArticles')->name('backend.article');
+    Route::get('/{id}','backendController@listArticles')->name('backend.article.detail');
+    Route::get('/create/{id}','backendController@listArticles')->name('backend.article.create');
+    Route::get('/update/{id}','backendController@listArticles')->name('backend.article.update');
+});
+
+Route::get('/article/','backendController@listArticles')->name('backend.article');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
